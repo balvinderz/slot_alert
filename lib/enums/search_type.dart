@@ -1,0 +1,1 @@
+enum SearchType{district,pinCode}
