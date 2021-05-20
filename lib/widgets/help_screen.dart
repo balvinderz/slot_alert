@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:dart_vlc/dart_vlc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class HelpScreen extends StatelessWidget {
   @override
@@ -29,14 +32,23 @@ class HelpScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30)),
             onPressed: () async {
-              Media media2 = await Media.asset('assets/test.mp3');
-              Player player = new Player(
-                id: 69420,
-                videoWidth: 0,
-                videoHeight: 0,
-              );
-              player.add(media2);
-              await player.play();
+              if(Platform.isMacOS)
+                {
+                    AudioPlayer player = AudioPlayer();
+                   await  player.setAsset("assets/test.mp3");
+                    await player.play();
+
+                }
+              else {
+                Media media2 = await Media.asset('assets/test.mp3');
+                Player player = new Player(
+                  id: 69420,
+                  videoWidth: 0,
+                  videoHeight: 0,
+                );
+                player.add(media2);
+                await player.play();
+              }
 
             },
             color: Colors.blue,

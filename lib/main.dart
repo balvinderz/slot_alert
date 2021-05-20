@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:covid_alerter/slot_provider.dart';
 import 'package:covid_alerter/widgets/alert_by_district.dart';
@@ -94,7 +95,7 @@ class _MyAppState extends State<MyApp> {
                       alignment: Alignment.bottomCenter,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Made with ❤ by Balvinder Singh Gambhir",style: TextStyle(
+                        child: Text(Platform.isMacOS ? "Made By Balvinder Singh Gambhir" : "Made with ❤ by Balvinder Singh Gambhir",style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20
                         ),),
